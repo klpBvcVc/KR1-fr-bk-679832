@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Учебный интернет-магазин одежды и обуви: популярные товары, преимущества и форма заявки.">
+  <meta name="description" content="Учебный интернет-магазин одежды и обуви: популярные товары, преимущества и форма заказа.">
   <title>Учебный интернет-магазин</title>
   <link rel="stylesheet" href="css/style.css">
   <script src="js/main.js" defer></script>
@@ -57,7 +57,7 @@
           <h3 class="product-card__title">Джинсы</h3>
           <p class="product-card__description">Классические джинсы прямого кроя.</p>
           <p class="product-card__price">Цена: 4 990 руб.</p>
-          <button class="button button--primary product-card__button" type="button"   data-product="Джинсы">Заказать</button>
+          <button class="button button--primary product-card__button" type="button" data-order-open data-product="Джинсы">Заказать</button>
         </article>
         <article class="product-card product-card--discount">
           <span class="product-card__badge product-card__badge--sale">Скидка</span>
@@ -65,14 +65,14 @@
           <h3 class="product-card__title">Куртка</h3>
           <p class="product-card__description">Демисезонная куртка из плотной ткани.</p>
           <p class="product-card__price">Цена: 8 990 руб.</p>
-          <button class="button button--primary product-card__button" type="button"   data-product="Куртка">Заказать</button>
+          <button class="button button--primary product-card__button" type="button" data-order-open data-product="Куртка">Заказать</button>
         </article>
         <article class="product-card">
           <img class="product-card__image" src="images/products/hoodie.jpg" alt="Толстовка" loading="lazy">
           <h3 class="product-card__title">Толстовка</h3>
           <p class="product-card__description">Тёплая толстовка с капюшоном.</p>
           <p class="product-card__price">Цена: 3 990 руб.</p>
-          <button class="button button--primary product-card__button" type="button"   data-product="Толстовка">Заказать</button>
+          <button class="button button--primary product-card__button" type="button" data-order-open data-product="Толстовка">Заказать</button>
         </article>
       </div>  
     </section>
@@ -93,7 +93,9 @@
   </footer>
 
   <dialog class="order-dialog" id="order-dialog" aria-labelledby="order-dialog-title">
-    <h2 class="order-dialog__title" id="order-dialog-title">Оформление заявки</h2>
+    <button class="order-dialog__close" type="button" id="close-order-dialog" aria-label="Закрыть">&times;</button>
+    <h2 class="order-dialog__title" id="order-dialog-title">Быстрый заказ</h2>
+    <p class="order-dialog__note">Мы свяжемся с вами для уточнения деталей и адреса доставки.</p>
 
     <form class="order-form" id="order-form" action="#" method="post" novalidate>
       <input id="selected-product" name="selected-product" type="hidden">
@@ -112,24 +114,13 @@
       </div>
 
       <div class="order-form__field">
-        <label class="order-form__label" for="order-email">E-mail</label>
-        <input class="order-form__input"
-          id="order-email"
-          name="email"
-          type="email"
-          placeholder="example@mail.ru"
-          autocomplete="email"
-          required
-        >
-      </div>
-
-      <div class="order-form__field">
         <label class="order-form__label" for="order-phone">Телефон</label>
         <input class="order-form__input"
           id="order-phone"
           name="phone"
           type="tel"
           inputmode="tel"
+          autocomplete="tel"
           placeholder="+7 (900) 000-00-00"
           pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$"
           required
@@ -138,56 +129,20 @@
       </div>
 
       <div class="order-form__field">
-        <label class="order-form__label" for="order-date">Дата связи</label>
-        <input class="order-form__input"
-          id="order-date"
-          name="date"
-          type="date"
-        >
-      </div>
-
-      <div class="order-form__field">
-        <label class="order-form__label" for="order-topic">Тема заявки</label>
-        <select class="order-form__select" id="order-topic" name="topic" required>
-          <option value="">Выберите тему</option>
-          <option value="product">Заказ товара</option>
-          <option value="consultation">Консультация</option>
-          <option value="delivery">Доставка</option>
-        </select>
-      </div>
-
-      <div class="order-form__field">
-        <label class="order-form__label" for="order-comment">Комментарий</label>
-        <textarea class="order-form__textarea"
-          id="order-comment"
-          name="comment"
-          rows="4"
-          placeholder="Укажите дополнительную информацию"
-        ></textarea>
-      </div>
-
-      <div class="order-form__field order-form__field--checkbox">
-        <label>
-          <input
-            class="order-form__input order-form__input--checkbox"
-            id="order-agreement"
-            name="agreement"
-            type="checkbox"
-            required
-          >
-          Я согласен на обработку данных
+        <label class="order-form__switch">
+          <input class="order-form__switch-input" id="order-agreement" name="agreement" type="checkbox" role="switch" required>
+          <span class="order-form__switch-text">Я согласен на обработку данных</span>
         </label>
       </div>
 
       <div class="order-form__actions">
-        <button class="button button--secondary" type="button" id="close-order-dialog">Закрыть</button>
-        <button class="button button--primary" type="submit">Отправить заявку</button>
+        <button class="button button--primary" type="submit">Заказать</button>
       </div>
     </form>
   </dialog>
 
   <p class="success-message" id="success-message" hidden>
-    Форма успешно отправлена!
+    Заказ отправлен! Мы скоро свяжемся с вами.
   </p>
 
 </body>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Страница оформления заказа в учебном интернет-магазине: контактные данные и адрес доставки.">
+  <title>Оформление заказа - Учебный интернет-магазин</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="site-header__logo" href="index.html">ShopProject</a>
+
+      <nav class="site-nav" aria-label="Основная навигация">
+        <ul class="site-nav__list">
+          <li class="site-nav__item"><a class="site-nav__link" href="index.html">Главная</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="catalog.html">Каталог</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="contacts.html">Контакты</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="index.html#advantages">Преимущества</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="index.html#popular">Популярные товары</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="index.html#contacts">Обратная связь</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  
+  <main>
+    
+    <nav class="breadcrumbs" aria-label="Хлебные крошки">
+      <a class="breadcrumbs__link" href="index.html">Главная</a>
+      <a class="breadcrumbs__link" href="catalog.html">Каталог</a>
+      <span class="breadcrumbs__item breadcrumbs__item--conditional" id="from-jeans"><a class="breadcrumbs__link" href="product.html">Джинсы</a></span>
+      <span class="breadcrumbs__current">Оформление заказа</span>
+    </nav>
+  
+    <section class="section">
+      <h1 class="section__title">Оформление заказа</h1>
+
+      <form class="order-form order-form--page" id="order-form" action="#" method="post" novalidate>
+        <div class="order-form__field">
+          <label class="order-form__label" for="name">Имя</label>
+          <input class="order-form__input" type="text" id="name" name="name" placeholder="Введите ваше имя" minlength="2" autocomplete="name" required>
+        </div>
+
+        <div class="order-form__field">
+          <label class="order-form__label" for="email">E-mail</label>
+          <input class="order-form__input" type="email" id="email" name="email" placeholder="example@mail.ru" autocomplete="email" required>
+        </div>
+
+        <div class="order-form__field">
+          <label class="order-form__label" for="phone">Телефон</label>
+          <input class="order-form__input" type="tel" id="phone" name="phone" inputmode="tel" autocomplete="tel" placeholder="+7 (900) 000-00-00" pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$" required>
+          <small class="order-form__hint">Формат: +7 (900) 000-00-00</small>
+        </div>
+
+        <div class="order-form__field">
+          <label class="order-form__label" for="address">Адрес доставки</label>
+          <textarea class="order-form__textarea" id="address" name="address" rows="3" placeholder="Город, улица, дом, квартира" autocomplete="street-address" required></textarea>
+        </div>
+
+        <div class="order-form__field">
+          <label class="order-form__label" for="comment">Комментарий к заказу</label>
+          <textarea class="order-form__textarea" id="comment" name="comment" rows="3" placeholder="Размер, цвет, пожелания по доставке"></textarea>
+        </div>
+
+        <div class="order-form__field order-form__field--callback">
+          <label class="order-form__switch">
+            <input class="order-form__switch-input" type="checkbox" id="callback" name="callback" role="switch">
+            <span class="order-form__switch-text order-form__switch-text--off">Свяжитесь со мной</span>
+            <span class="order-form__switch-text order-form__switch-text--on">Удобная дата звонка</span>
+          </label>
+          <input class="order-form__input order-form__input--date" type="date" id="callback-date" name="callback-date" aria-label="Удобная дата звонка">
+        </div>
+
+        <div class="order-form__field">
+          <label class="order-form__switch">
+            <input class="order-form__switch-input" id="agreement" name="agreement" type="checkbox" role="switch" required>
+            <span class="order-form__switch-text">Я согласен на обработку данных</span>
+          </label>
+        </div>
+
+        <div class="order-form__actions">
+          <button class="button button--primary" type="submit">Оформить заказ</button>
+        </div>
+      </form>
+
+      <p class="success-message" id="success-message" hidden>Ваш заказ оформлен, спасибо!</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Учебный проект. Все права защищены.</p>
+    <p>Дисциплина: Фронтенд и бэкенд разработка</p>
+  </footer>
+</body>
+</html>
