@@ -8,18 +8,18 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <header>
-    <div class="site-header">
-      <a class="site-logo" href="index.html">ShopProject</a>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="site-header__logo" href="index.html">ShopProject</a>
 
       <nav class="site-nav" aria-label="Основная навигация">
         <ul class="site-nav__list">
-          <li><a href="index.html">Главная</a></li>
-          <li><a href="catalog.html">Каталог</a></li>
-          <li><a href="contacts.html">Контакты</a></li>
-          <li><a href="index.html#advantages">Преимущества</a></li>
-          <li><a href="index.html#popular">Популярные товары</a></li>
-          <li><a href="index.html#contacts">Обратная связь</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="index.html">Главная</a></li>
+          <li class="site-nav__item"><a class="site-nav__link site-nav__link--active" href="catalog.html">Каталог</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="contacts.html">Контакты</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="index.html#advantages">Преимущества</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="index.html#popular">Популярные товары</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="index.html#contacts">Обратная связь</a></li>
         </ul>
       </nav>
     </div>
@@ -27,8 +27,8 @@
 
   <main>
     <nav class="breadcrumbs" aria-label="Хлебные крошки">
-      <a href="index.html">Главная</a>
-      <span>Каталог</span>
+      <a class="breadcrumbs__link" href="index.html">Главная</a>
+      <span class="breadcrumbs__current">Каталог</span>
     </nav>
 
     <section class="section">
@@ -45,36 +45,36 @@
         <h2>Фильтры</h2>
             
         <form class="filters-form" action="#" method="get">
-          <fieldset>
-            <legend>Категории</legend>
+          <fieldset class="filters-form__group">
+            <legend class="filters-form__legend">Категории</legend>
             
-            <label>
+            <label class="filters-form__label">
               <input type="checkbox" name="category" value="all">
               Все товары
             </label>
             
-            <label>
+            <label class="filters-form__label">
               <input type="checkbox" name="category" value="popular">
               Популярные
             </label>
 
-            <label>
+            <label class="filters-form__label">
               <input type="checkbox" name="category" value="new">
               Новинки
             </label>
           </fieldset>
 
-          <fieldset>
-            <legend>Цена</legend>
+          <fieldset class="filters-form__group">
+            <legend class="filters-form__legend">Цена</legend>
             
-            <label for="price-from">От</label>
-            <input id="price-from" name="price-from" type="number" min="0" placeholder="0">
+            <label class="filters-form__label" for="price-from">От</label>
+            <input class="filters-form__input" id="price-from" name="price-from" type="number" min="0" placeholder="0">
 
-            <label for="price-to">До</label>
-            <input id="price-to" name="price-to" type="number" min="0" placeholder="12000">
+            <label class="filters-form__label" for="price-to">До</label>
+            <input class="filters-form__input" id="price-to" name="price-to" type="number" min="0" placeholder="12000">
           </fieldset>
 
-          <button class="button" type="submit">Применить</button>
+          <button class="button button--primary" type="submit">Применить</button>
         </form>
       </aside>
 
@@ -82,115 +82,115 @@
         <h2>Список товаров</h2>
         <div class="products-grid">
           <article class="product-card">
-            <h3>Джинсы</h3>
-            <p>Классические джинсы прямого кроя.</p>
-            <p>Цена: 4 990 руб.</p>
-            <a class="button" href="index.html#popular">Подробнее</a>
+            <h3 class="product-card__title">Джинсы</h3>
+            <p class="product-card__description">Классические джинсы прямого кроя.</p>
+            <p class="product-card__price">Цена: 4 990 руб.</p>
+            <a class="button button--primary product-card__button" href="index.html#popular">Подробнее</a>
           </article>
 
           <article class="product-card">
-            <h3>Куртка</h3>
-            <p>Демисезонная куртка из плотной ткани.</p>
-            <p>Цена: 8 990 руб.</p>
-            <a class="button" href="index.html#popular">Подробнее</a>
+            <h3 class="product-card__title">Куртка</h3>
+            <p class="product-card__description">Демисезонная куртка из плотной ткани.</p>
+            <p class="product-card__price">Цена: 8 990 руб.</p>
+            <a class="button button--primary product-card__button" href="index.html#popular">Подробнее</a>
           </article>
 
           <article class="product-card">
-            <h3>Толстовка</h3>
-            <p>Тёплая толстовка с капюшоном.</p>
-            <p>Цена: 3 990 руб.</p>
-            <a class="button" href="index.html#popular">Подробнее</a>
+            <h3 class="product-card__title">Толстовка</h3>
+            <p class="product-card__description">Тёплая толстовка с капюшоном.</p>
+            <p class="product-card__price">Цена: 3 990 руб.</p>
+            <a class="button button--primary product-card__button" href="index.html#popular">Подробнее</a>
           </article>
 
           <article class="product-card">
-            <h3>Футболка базовая</h3>
-            <p>Хлопковая футболка свободного кроя.</p>
-            <p>Цена: 1 490 руб.</p>
-            <a class="button" href="index.html#popular">Подробнее</a>
+            <h3 class="product-card__title">Футболка базовая</h3>
+            <p class="product-card__description">Хлопковая футболка свободного кроя.</p>
+            <p class="product-card__price">Цена: 1 490 руб.</p>
+            <a class="button button--primary product-card__button" href="index.html#popular">Подробнее</a>
           </article>
 
           <article class="product-card">
-            <h3>Рубашка в клетку</h3>
-            <p>Рубашка из плотного хлопка с длинным рукавом.</p>
-            <p>Цена: 2 990 руб.</p>
-            <a class="button" href="index.html#popular">Подробнее</a>
+            <h3 class="product-card__title">Рубашка в клетку</h3>
+            <p class="product-card__description">Рубашка из плотного хлопка с длинным рукавом.</p>
+            <p class="product-card__price">Цена: 2 990 руб.</p>
+            <a class="button button--primary product-card__button" href="index.html#popular">Подробнее</a>
           </article>
 
           <article class="product-card">
-            <h3>Свитер вязаный</h3>
-            <p>Свитер из шерстяной пряжи, воротник под горло.</p>
-            <p>Цена: 4 490 руб.</p>
-            <a class="button" href="index.html#popular">Подробнее</a>
+            <h3 class="product-card__title">Свитер вязаный</h3>
+            <p class="product-card__description">Свитер из шерстяной пряжи, воротник под горло.</p>
+            <p class="product-card__price">Цена: 4 490 руб.</p>
+            <a class="button button--primary product-card__button" href="index.html#popular">Подробнее</a>
           </article>
 
           <article class="product-card">
-            <h3>Лонгслив</h3>
-            <p>Лонгслив из мягкого трикотажа для многослойных образов.</p>
-            <p>Цена: 1 990 руб.</p>
-            <a class="button" href="index.html#popular">Подробнее</a>
+            <h3 class="product-card__title">Лонгслив</h3>
+            <p class="product-card__description">Лонгслив из мягкого трикотажа для многослойных образов.</p>
+            <p class="product-card__price">Цена: 1 990 руб.</p>
+            <a class="button button--primary product-card__button" href="index.html#popular">Подробнее</a>
           </article>
 
           <article class="product-card">
-            <h3>Брюки чинос</h3>
-            <p>Брюки зауженного кроя из хлопка с эластаном.</p>
-            <p>Цена: 3 790 руб.</p>
-            <a class="button" href="index.html#popular">Подробнее</a>
+            <h3 class="product-card__title">Брюки чинос</h3>
+            <p class="product-card__description">Брюки зауженного кроя из хлопка с эластаном.</p>
+            <p class="product-card__price">Цена: 3 790 руб.</p>
+            <a class="button button--primary product-card__button" href="index.html#popular">Подробнее</a>
           </article>
 
           <article class="product-card">
-            <h3>Кардиган</h3>
-            <p>Тёплый кардиган на пуговицах, средней плотности.</p>
-            <p>Цена: 4 290 руб.</p>
-            <a class="button" href="index.html#popular">Подробнее</a>
+            <h3 class="product-card__title">Кардиган</h3>
+            <p class="product-card__description">Тёплый кардиган на пуговицах, средней плотности.</p>
+            <p class="product-card__price">Цена: 4 290 руб.</p>
+            <a class="button button--primary product-card__button" href="index.html#popular">Подробнее</a>
           </article>
 
           <article class="product-card">
-            <h3>Бомбер</h3>
-            <p>Лёгкий бомбер на молнии для прохладной погоды.</p>
-            <p>Цена: 6 490 руб.</p>
-            <a class="button" href="index.html#popular">Подробнее</a>
+            <h3 class="product-card__title">Бомбер</h3>
+            <p class="product-card__description">Лёгкий бомбер на молнии для прохладной погоды.</p>
+            <p class="product-card__price">Цена: 6 490 руб.</p>
+            <a class="button button--primary product-card__button" href="index.html#popular">Подробнее</a>
           </article>
 
           <article class="product-card">
-            <h3>Пальто шерстяное</h3>
-            <p>Классическое пальто прямого силуэта из шерсти.</p>
-            <p>Цена: 11 990 руб.</p>
-            <a class="button" href="index.html#popular">Подробнее</a>
+            <h3 class="product-card__title">Пальто шерстяное</h3>
+            <p class="product-card__description">Классическое пальто прямого силуэта из шерсти.</p>
+            <p class="product-card__price">Цена: 11 990 руб.</p>
+            <a class="button button--primary product-card__button" href="index.html#popular">Подробнее</a>
           </article>
 
           <article class="product-card">
-            <h3>Ботинки челси</h3>
-            <p>Кожаные ботинки на резинках с устойчивой подошвой.</p>
-            <p>Цена: 7 490 руб.</p>
-            <a class="button" href="index.html#popular">Подробнее</a>
+            <h3 class="product-card__title">Ботинки челси</h3>
+            <p class="product-card__description">Кожаные ботинки на резинках с устойчивой подошвой.</p>
+            <p class="product-card__price">Цена: 7 490 руб.</p>
+            <a class="button button--primary product-card__button" href="index.html#popular">Подробнее</a>
           </article>
 
           <article class="product-card">
-            <h3>Утеплённые кроссовки</h3>
-            <p>Кроссовки с мембраной и тёплой подкладкой.</p>
-            <p>Цена: 6 990 руб.</p>
-            <a class="button" href="index.html#popular">Подробнее</a>
+            <h3 class="product-card__title">Утеплённые кроссовки</h3>
+            <p class="product-card__description">Кроссовки с мембраной и тёплой подкладкой.</p>
+            <p class="product-card__price">Цена: 6 990 руб.</p>
+            <a class="button button--primary product-card__button" href="index.html#popular">Подробнее</a>
           </article>
 
           <article class="product-card">
-            <h3>Ботинки на шнуровке</h3>
-            <p>Высокие кожаные ботинки на протекторной подошве.</p>
-            <p>Цена: 8 990 руб.</p>
-            <a class="button" href="index.html#popular">Подробнее</a>
+            <h3 class="product-card__title">Ботинки на шнуровке</h3>
+            <p class="product-card__description">Высокие кожаные ботинки на протекторной подошве.</p>
+            <p class="product-card__price">Цена: 8 990 руб.</p>
+            <a class="button button--primary product-card__button" href="index.html#popular">Подробнее</a>
           </article>
 
           <article class="product-card">
-            <h3>Резиновые сапоги</h3>
-            <p>Непромокаемые сапоги для дождливой осени.</p>
-            <p>Цена: 3 290 руб.</p>
-            <a class="button" href="index.html#popular">Подробнее</a>
+            <h3 class="product-card__title">Резиновые сапоги</h3>
+            <p class="product-card__description">Непромокаемые сапоги для дождливой осени.</p>
+            <p class="product-card__price">Цена: 3 290 руб.</p>
+            <a class="button button--primary product-card__button" href="index.html#popular">Подробнее</a>
           </article>
         </div>
       </section>
     </section>
   </main>
 
-  <footer>
+  <footer class="site-footer">
     <p>&copy; 2026 Учебный проект. Все права защищены.</p>
     <p>Дисциплина: Фронтенд и бэкенд разработка</p>
   </footer>
