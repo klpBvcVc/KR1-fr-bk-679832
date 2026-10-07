@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Подробная информация про джинсы.">
+  <title>Джинсы - Учебный интернет-магазин</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="site-header__logo" href="index.html">ShopProject</a>
+
+      <nav class="site-nav" aria-label="Основная навигация">
+        <ul class="site-nav__list">
+          <li class="site-nav__item"><a class="site-nav__link" href="index.html">Главная</a></li>
+          <li class="site-nav__item"><a class="site-nav__link site-nav__link--active" href="catalog.html">Каталог</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="contacts.html">Контакты</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="index.html#advantages">Преимущества</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="index.html#popular">Популярные товары</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="index.html#contacts">Обратная связь</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  
+  <main>
+    <nav class="breadcrumbs" aria-label="Хлебные крошки">
+      <a class="breadcrumbs__link" href="index.html">Главная</a>
+      <a class="breadcrumbs__link" href="catalog.html">Каталог</a>
+      <span class="breadcrumbs__current">Джинсы</span>
+    </nav>
+  
+    <section class="product">
+      <img class="product__image" src="images/products/jeans.jpg" alt="Джинсы">
+      <div class="product__info">
+        <h1 class="product__title">Джинсы</h1>
+        <p class="product__price">4 990 руб.</p>
+        <p class="product__description">Классические джинсы прямого кроя из плотного хлопкового денима. Средняя посадка, пять карманов, не вытягиваются при носке. Подходят для повседневных образов в любое время года.</p>
+        <a class="button button--primary" href="order.html">Оставить заявку</a>
+      </div>
+    </section>
+  
+    <section class="section">
+      <h2 class="section__title">Характеристики</h2>
+      <table class="product-table">
+        <caption class="product-table__caption">Характеристики джинсов</caption>
+        <thead class="product-table__head">
+          <tr class="product-table__row">
+            <th class="product-table__head" scope="col">Параметр</th>
+            <th class="product-table__head" scope="col">Значение</th>
+          </tr>
+        </thead>
+        <tbody class="product-table__body">
+          <tr class="product-table__row">
+            <th class="product-table__head" scope="row">Материал</th>
+            <td class="product-table__cell">100% хлопок</td>
+          </tr>
+          <tr class="product-table__row">
+            <th class="product-table__head" scope="row">Цвет</th>
+            <td class="product-table__cell">Синий</td>
+          </tr>
+          <tr class="product-table__row">
+            <th class="product-table__head" scope="row">Крой</th>
+            <td class="product-table__cell">Прямой</td>
+          </tr>
+          <tr class="product-table__row">
+            <th class="product-table__head" scope="row">Посадка</th>
+            <td class="product-table__cell">Средняя</td>
+          </tr>
+          <tr class="product-table__row">
+            <th class="product-table__head" scope="row">Сезон</th>
+            <td class="product-table__cell">Круглый год</td>
+          </tr>
+          <tr class="product-table__row">
+            <th class="product-table__head" scope="row">Размеры</th>
+            <td class="product-table__cell">28, 30, 32, 34, 36</td>
+          </tr>
+          <tr class="product-table__row">
+            <th class="product-table__head" scope="row">Страна производства</th>
+            <td class="product-table__cell">Италия</td>
+          </tr>
+          <tr class="product-table__row">
+            <th class="product-table__head" scope="row">Уход</th>
+            <td class="product-table__cell">Стирка при 30 °C, не отбеливать</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Учебный проект. Все права защищены.</p>
+    <p>Дисциплина: Фронтенд и бэкенд разработка</p>
+  </footer>
+</body>
+</html>
