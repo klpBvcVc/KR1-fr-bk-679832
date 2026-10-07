@@ -2,8 +2,8 @@
 
 // Получение окна по id
 const orderDialog = document.getElementById('order-dialog');
-// Получение всех кнопок заказа в карточках товаров
-const orderButtons = document.querySelectorAll('.product-card__button');
+// Получение всех кнопок, открывающих окно быстрого заказа
+const orderButtons = document.querySelectorAll('[data-order-open]');
 // Получаем кнопку закрытия модального окна
 const closeDialogButton = document.getElementById('close-order-dialog');
 // Получаем скрытое поле, в которое будет записываться выбранный товар
@@ -12,7 +12,7 @@ const selectedProductInput = document.getElementById('selected-product');
 orderButtons.forEach((button) => {
     button.addEventListener('click', () => {
         // Получаем название товара из data-атрибута кнопки
-        const productName = button.dataset.product;
+        const productName = button.dataset.product || '';
         // Записываем название товара в скрытое поле формы
         selectedProductInput.value = productName;
         // Открываем модальное окно
@@ -21,13 +21,15 @@ orderButtons.forEach((button) => {
 });
 
 // Закрытие модального окна при клике на кнопку закрытия
-closeDialogButton.addEventListener('click', () => {
-    orderDialog.close();
-});
+if (closeDialogButton) {
+    closeDialogButton.addEventListener('click', () => {
+        orderDialog.close();
+    });
+}
 
 // ===== Отправка формы
 
-// Получаем форму заявки
+// Получаем форму заказа
 const orderForm = document.getElementById('order-form');
 
 // Получаем сообщение об успешной отправке
@@ -64,5 +66,7 @@ orderForm.addEventListener('submit', (event) => {
     orderForm.reset();
 
     // Закрытие модального окна
-    orderDialog.close();
+    if (orderDialog) {
+        orderDialog.close();
+    }
 });
