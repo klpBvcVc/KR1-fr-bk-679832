@@ -230,6 +230,7 @@ a:focus-visible {
   display: flex;
   flex-direction: column;
   gap: var(--space-sm);
+  position: relative;
   padding: var(--space-md);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
@@ -270,6 +271,35 @@ a:focus-visible {
 .product-card__button {
   margin-top: auto;
   align-self: flex-start;
+}
+
+.product-card__image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: center 60%;
+  border-radius: var(--radius-sm);
+}
+
+.product-card__badge {
+  position: absolute;
+  top: var(--space-md);
+  left: var(--space-md);
+  z-index: 1;
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-sm);
+  color: var(--color-white);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.product-card__badge--sale {
+  background-color: var(--color-danger);
+}
+
+.product-card__badge--new {
+  background-color: var(--color-success);
 }
 
 /* --- Страница каталога --- */
