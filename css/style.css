@@ -3,6 +3,9 @@
    =============================== */
 
 :root {
+  /* Диалог, поля формы и полосы прокрутки подстраиваются под тему системы */
+  color-scheme: light dark;
+
   /* Основные цвета проекта (Палитра «Благородный бордо и слоновая кость») */
   --color-bg: #f9f8f6;
   --color-text: #2a2a2a;
@@ -16,6 +19,8 @@
   --color-success: #168a2f;
   --color-success-bg: #eefaf0;
   --color-white: #ffffff;
+  --color-on-primary: #ffffff;
+  --color-backdrop: rgba(0, 0, 0, 0.5);
   --color-accent: #8a6a1f;
   --color-overlay: rgba(32, 12, 16, 0.55);
 
@@ -35,6 +40,7 @@
   /* Размеры */
   --container-width: 1100px;
   --header-height: 73px;
+  --topbar-height: 37px;
 
   /* Типографика */
   --font-heading: 'Montserrat', Arial, sans-serif;
@@ -44,6 +50,53 @@
   /* Тени */
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
   --shadow-md: 0 10px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* Тёмная тема: переопределяем только токены, правила компонентов не меняются */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-bg: #151211;
+    --color-text: #ece7e1;
+    --color-muted: #a8a09a;
+    --color-primary: #d4606c;
+    --color-primary-dark: #e07a85;
+    --color-border: #3b3532;
+    --color-surface: #1f1b1a;
+    --color-surface-accent: #2a1f21;
+    --color-danger: #ff7a8a;
+    --color-success: #4cc26b;
+    --color-success-bg: #12261a;
+    --color-accent: #d3a94a;
+    --color-on-primary: #151211;
+    --color-backdrop: rgba(0, 0, 0, 0.7);
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+    --shadow-md: 0 10px 24px rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* Ручной выбор темы кнопкой в шапке (js/ui.js ставит data-theme на <html>) */
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-bg: #151211;
+  --color-text: #ece7e1;
+  --color-muted: #a8a09a;
+  --color-primary: #d4606c;
+  --color-primary-dark: #e07a85;
+  --color-border: #3b3532;
+  --color-surface: #1f1b1a;
+  --color-surface-accent: #2a1f21;
+  --color-danger: #ff7a8a;
+  --color-success: #4cc26b;
+  --color-success-bg: #12261a;
+  --color-accent: #d3a94a;
+  --color-on-primary: #151211;
+  --color-backdrop: rgba(0, 0, 0, 0.7);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 10px 24px rgba(0, 0, 0, 0.5);
 }
 
 /* Плавная прокрутка к якорям с учетом высоты липкой шапки */
@@ -78,6 +131,12 @@ body {
   line-height: 1.5;
   color: var(--color-text);
   background-color: var(--color-bg);
+  --top-offset: var(--topbar-height);
+}
+
+/* Плашка закрыта: сверху ничего нет, экран hero занимает всю высоту под шапкой */
+body:has(.top-bar__toggle:checked) {
+  --top-offset: 0px;
 }
 
 h1,
@@ -131,18 +190,18 @@ a:focus-visible {
 }
 
 .button--primary {
-  color: var(--color-white);
+  color: var(--color-on-primary);
   background-color: var(--color-primary);
 }
 
 .button--primary:hover {
-  color: var(--color-white);
+  color: var(--color-on-primary);
   background-color: var(--color-primary-dark);
 }
 
 .button--secondary {
   color: var(--color-primary);
-  background-color: var(--color-white);
+  background-color: var(--color-bg);
   border-color: var(--color-primary);
 }
 
@@ -179,9 +238,11 @@ a:focus-visible {
 /* --- Промо-плашка над шапкой (в потоке, уходит при прокрутке сама) --- */
 
 .top-bar {
-  padding: var(--space-sm) 0;
+  display: flex;
+  align-items: center;
+  height: var(--topbar-height);
   background-color: var(--color-primary-dark);
-  color: var(--color-white);
+  color: var(--color-on-primary);
   font-size: var(--font-size-sm);
   text-align: center;
 }
@@ -218,7 +279,7 @@ a:focus-visible {
 }
 
 .top-bar__close:has(:focus-visible) {
-  outline: 2px solid var(--color-white);
+  outline: 2px solid var(--color-on-primary);
   outline-offset: 2px;
 }
 
@@ -236,6 +297,7 @@ a:focus-visible {
   justify-content: space-between;
   align-items: center;
   gap: var(--space-md);
+  min-height: calc(var(--header-height) - 1px);
   padding-top: var(--space-md);
   padding-bottom: var(--space-md);
 }
@@ -244,6 +306,47 @@ a:focus-visible {
   font-weight: 700;
   color: var(--color-text);
   text-decoration: none;
+}
+
+.site-nav {
+  margin-left: auto;
+}
+
+.theme-toggle {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  color: var(--color-text);
+  background-color: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.theme-toggle:hover {
+  color: var(--color-on-primary);
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+/* Иконка показывает, во что переключит нажатие: луна - в тёмную, солнце - в светлую */
+.theme-toggle__icon::before {
+  content: "\263E";
+}
+
+.theme-toggle[aria-pressed="true"] .theme-toggle__icon::before {
+  content: "\2600";
 }
 
 .site-nav__list {
@@ -267,7 +370,7 @@ a:focus-visible {
 }
 
 .site-nav__link:hover {
-  color: var(--color-white);
+  color: var(--color-on-primary);
   background-color: var(--color-primary);
 }
 
@@ -277,7 +380,7 @@ a:focus-visible {
 }
 
 .site-nav__link--active {
-  color: var(--color-white);
+  color: var(--color-on-primary);
   background-color: var(--color-primary);
 }
 
@@ -320,8 +423,9 @@ a:focus-visible {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 75vh;
-  margin: 0 0 var(--space-xl);
+  min-height: calc(100vh - var(--header-height) - var(--top-offset));
+  min-height: calc(100svh - var(--header-height) - var(--top-offset));
+  margin: 0;
   padding: var(--space-2xl) 0;
   text-align: center;
   background-color: var(--color-text);
@@ -359,6 +463,23 @@ a:focus-visible {
 .section {
   max-width: var(--container-width);
   margin: 0 auto var(--space-xl);
+}
+
+/* Экран: секция главной ровно на видимую высоту под липкой шапкой */
+.screen {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - var(--header-height));
+  min-height: calc(100svh - var(--header-height));
+}
+
+.screen__inner {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: var(--space-xl);
+  padding-bottom: var(--space-xl);
 }
 
 .section__title {
@@ -428,23 +549,26 @@ a:focus-visible {
   border-radius: var(--radius-sm);
 }
 
-.product-card__badge {
+.product-card__badge,
+.product__badge {
   position: absolute;
   top: var(--space-md);
   left: var(--space-md);
   z-index: 1;
   padding: var(--space-xs) var(--space-sm);
   border-radius: var(--radius-sm);
-  color: var(--color-white);
+  color: var(--color-on-primary);
   font-size: var(--font-size-sm);
   font-weight: 700;
 }
 
-.product-card__badge--sale {
+.product-card__badge--sale,
+.product__badge--sale {
   background-color: var(--color-primary);
 }
 
-.product-card__badge--new {
+.product-card__badge--new,
+.product__badge--new {
   background-color: var(--color-accent);
 }
 
@@ -460,6 +584,9 @@ a:focus-visible {
 
 .catalog-filters {
   grid-area: filters;
+  position: sticky;
+  top: calc(var(--header-height) + var(--space-md));
+  align-self: start;
   padding: var(--space-md);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
@@ -477,6 +604,10 @@ a:focus-visible {
   gap: var(--space-lg);
   max-width: var(--container-width);
   margin: 0 auto var(--space-xl);
+}
+
+.product__media {
+  position: relative;
 }
 
 .product__image {
@@ -544,22 +675,34 @@ a:focus-visible {
   margin-bottom: var(--space-sm);
 }
 
-.filters-form__input {
-  width: 100%;
-  padding: 8px 10px;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  font: inherit;
+.filters-form__radio {
+  margin-right: var(--space-sm);
+  accent-color: var(--color-primary);
+}
+
+/* Фильтр без JS: отмеченный radio прячет карточки, которые ему не подходят.
+   Две группы (категория и цена) работают вместе, как "И" */
+.catalog-layout:has([name="category"][value="clothes"]:checked) .product-card:not([data-category~="clothes"]),
+.catalog-layout:has([name="category"][value="shoes"]:checked) .product-card:not([data-category~="shoes"]),
+.catalog-layout:has([name="category"][value="sale"]:checked) .product-card:not([data-category~="sale"]),
+.catalog-layout:has([name="category"][value="new"]:checked) .product-card:not([data-category~="new"]),
+.catalog-layout:has([name="price"][value="low"]:checked) .product-card:not([data-price="low"]),
+.catalog-layout:has([name="price"][value="mid"]:checked) .product-card:not([data-price="mid"]),
+.catalog-layout:has([name="price"][value="high"]:checked) .product-card:not([data-price="high"]) {
+  display: none;
 }
 
 /* --- Интерактивные преимущества (вкладки без JS: radio внутри метки + :has) --- */
 
 .advantages {
-  margin: var(--space-xl) auto;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
 }
 
 .advantages__grid {
   display: grid;
+  flex: 1;
   grid-template-columns: 1fr 1.25fr;
   gap: var(--space-xl);
   align-items: stretch;
@@ -576,6 +719,7 @@ a:focus-visible {
 
 .advantages__tab {
   position: relative;
+  flex: 1 1 0;
   display: flex;
   align-items: center;
   gap: var(--space-md);
@@ -638,8 +782,8 @@ a:focus-visible {
 
 .advantages__panel {
   display: none;
+  flex: 1;
   flex-direction: column;
-  height: 100%;
 }
 
 /* Показываем панель, номер которой совпал с value отмеченного radio */
@@ -647,14 +791,16 @@ a:focus-visible {
 .advantages:has([value="2"]:checked) .advantages__panel--2,
 .advantages:has([value="3"]:checked) .advantages__panel--3,
 .advantages:has([value="4"]:checked) .advantages__panel--4,
-.advantages:has([value="5"]:checked) .advantages__panel--5 {
+.advantages:has([value="5"]:checked) .advantages__panel--5,
+.advantages:has([value="6"]:checked) .advantages__panel--6 {
   display: flex;
 }
 
 .advantages__image {
   display: block;
+  flex: 1 1 0;
   width: 100%;
-  height: 280px;
+  min-height: 220px;
   object-fit: cover;
 }
 
@@ -706,6 +852,105 @@ a:focus-visible {
   line-height: 1.6;
 }
 
+/* --- Сравнительная таблица и таблица размеров --- */
+
+.product-table__link {
+  font-weight: 600;
+}
+
+.product-table--compare {
+  margin-bottom: var(--space-md);
+}
+
+/* Колонка товара, на странице которого находится таблица */
+.product-table--compare .product-table__head--current,
+.product-table--compare .product-table__row .product-table__cell--current {
+  background-color: var(--color-surface-accent);
+  font-weight: 600;
+}
+
+/* --- Таблица размеров (details без JS) --- */
+
+.size-guide {
+  margin: 0 0 var(--space-xl);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+}
+
+.size-guide__summary,
+.faq__question {
+  padding: var(--space-md);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.size-guide__summary:hover,
+.faq__question:hover {
+  color: var(--color-primary);
+}
+
+.size-guide__summary:focus-visible,
+.faq__question:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: -2px;
+}
+
+.size-guide__content {
+  padding: 0 var(--space-md) var(--space-md);
+}
+
+.size-guide__more {
+  margin: var(--space-md) 0 0;
+  font-size: var(--font-size-sm);
+}
+
+.size-steps {
+  margin: 0 0 var(--space-xl);
+  padding-left: var(--space-lg);
+  line-height: 1.7;
+}
+
+/* --- Вопросы и ответы --- */
+
+.faq {
+  display: grid;
+  gap: var(--space-sm);
+}
+
+.faq__item {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+}
+
+.faq__item[open] {
+  border-color: var(--color-primary);
+}
+
+.faq__answer {
+  margin: 0;
+  padding: 0 var(--space-md) var(--space-md);
+  color: var(--color-muted);
+}
+
+.aside-info--inline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-lg);
+  margin: 0 auto var(--space-lg);
+  padding: var(--space-md) var(--space-lg);
+  text-align: left;
+}
+
+.aside-info--inline .aside-info__title {
+  margin-bottom: var(--space-xs);
+}
+
+.aside-info--inline .aside-info__text {
+  max-width: none;
+  margin: 0;
+}
+
 /* ===============================
    5. Форма и модальное окно
    =============================== */
@@ -713,12 +958,14 @@ a:focus-visible {
 .order-dialog {
   width: min(100% - 32px, 560px);
   padding: var(--space-lg);
-  border: none;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-bg);
+  color: var(--color-text);
   border-radius: var(--radius-lg);
 }
 
 .order-dialog::backdrop {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: var(--color-backdrop);
 }
 
 .order-dialog__title {
@@ -744,7 +991,6 @@ a:focus-visible {
 }
 
 .order-form__input,
-.order-form__select,
 .order-form__textarea {
   width: 100%;
   padding: 10px 12px;
@@ -760,20 +1006,17 @@ a:focus-visible {
 }
 
 .order-form__input:hover,
-.order-form__select:hover,
 .order-form__textarea:hover {
   border-color: var(--color-primary);
 }
 
 .order-form__input:focus-visible,
-.order-form__select:focus-visible,
 .order-form__textarea:focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 3px;
 }
 
 .order-form__input[aria-invalid="true"],
-.order-form__select[aria-invalid="true"],
 .order-form__textarea[aria-invalid="true"] {
   border-color: var(--color-danger);
 }
@@ -936,6 +1179,10 @@ a:focus-visible {
   text-decoration: none;
 }
 
+.site-footer__link--active {
+  color: var(--color-primary);
+}
+
 .site-footer__link:hover {
   color: var(--color-primary);
   text-decoration: underline;
@@ -957,17 +1204,25 @@ a:focus-visible {
   height: 44px;
   background-color: var(--color-primary);
   border: 1px solid var(--color-primary-dark);
-  color: var(--color-white);
+  color: var(--color-on-primary);
   font-size: 20px;
   font-weight: 700;
   text-decoration: none;
   box-shadow: var(--shadow-md);
-  transition: background-color 0.2s ease, transform 0.2s ease;
+  transition: background-color 0.2s ease, transform 0.2s ease, opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Скрыта, пока не пролистан первый экран; без JS кнопка видна всегда */
+.js .to-top:not(.to-top--visible) {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(var(--space-sm));
 }
 
 .to-top:hover {
   background-color: var(--color-primary-dark);
-  color: var(--color-white);
+  color: var(--color-on-primary);
   transform: translateY(-2px);
 }
 

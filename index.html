@@ -7,8 +7,9 @@
   <title>Учебный интернет-магазин</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <script src="js/ui.js"></script>
   <script src="js/main.js" defer></script>
 </head>
 
@@ -32,11 +33,13 @@
           <li class="site-nav__item"><a class="site-nav__link site-nav__link--active" href="index.html">Главная</a></li>
           <li class="site-nav__item"><a class="site-nav__link" href="catalog.html">Каталог</a></li>
           <li class="site-nav__item"><a class="site-nav__link" href="contacts.html">Контакты</a></li>
-          <li class="site-nav__item"><a class="site-nav__link" href="index.html#popular">Популярные товары</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="index.html#popular">Популярное</a></li>
           <li class="site-nav__item"><a class="site-nav__link" href="index.html#advantages">Преимущества</a></li>
-          <li class="site-nav__item"><a class="site-nav__link" href="index.html#contacts">Обратная связь</a></li>
         </ul>
       </nav>
+      <button class="theme-toggle" type="button" aria-label="Переключить тему оформления" aria-pressed="false" title="Тема: светлая или тёмная">
+        <span class="theme-toggle__icon" aria-hidden="true"></span>
+      </button>
     </div>
   </header>
 
@@ -54,100 +57,116 @@
       </div>
     </section>
 
-    <section class="section container" id="popular">
-      <h2 class="section__title">Популярные товары</h2>
-      <div class="products-grid">  
-        <article class="product-card">
-          <a class="product-card__image-link" href="product.html"><img class="product-card__image" src="images/products/jeans.jpg" alt="Джинсы" loading="lazy"></a>
-          <h3 class="product-card__title">Джинсы</h3>
-          <p class="product-card__description">Классические джинсы прямого кроя.</p>
-          <p class="product-card__price">Цена: 4 990 руб.</p>
-          <button class="button button--primary product-card__button" type="button" data-order-open data-product="Джинсы">Заказать</button>
-        </article>
-        <article class="product-card product-card--discount">
-          <span class="product-card__badge product-card__badge--sale">Скидка</span>
-          <a class="product-card__image-link" href="product-jacket.html"><img class="product-card__image" src="images/products/jacket.jpg" alt="Куртка" loading="lazy"></a>
-          <h3 class="product-card__title">Куртка</h3>
-          <p class="product-card__description">Демисезонная куртка из плотной ткани.</p>
-          <p class="product-card__price">Цена: 8 990 руб.</p>
-          <button class="button button--primary product-card__button" type="button" data-order-open data-product="Куртка">Заказать</button>
-        </article>
-        <article class="product-card">
-          <a class="product-card__image-link" href="product-hoodie.html"><img class="product-card__image" src="images/products/hoodie.jpg" alt="Толстовка" loading="lazy"></a>
-          <h3 class="product-card__title">Толстовка</h3>
-          <p class="product-card__description">Тёплая толстовка с капюшоном.</p>
-          <p class="product-card__price">Цена: 3 990 руб.</p>
-          <button class="button button--primary product-card__button" type="button" data-order-open data-product="Толстовка">Заказать</button>
-        </article>
-      </div>  
+    <section class="screen" id="popular">
+      <div class="container screen__inner">
+        <h2 class="section__title">Популярное</h2>
+        <div class="products-grid">  
+          <article class="product-card">
+            <a class="product-card__image-link" href="product.html"><img class="product-card__image" src="images/products/jeans.jpg" alt="Джинсы" loading="lazy"></a>
+            <h3 class="product-card__title">Джинсы</h3>
+            <p class="product-card__description">Классические джинсы прямого кроя.</p>
+            <p class="product-card__price">Цена: 4 990 руб.</p>
+            <button class="button button--primary product-card__button" type="button" data-order-open data-product="Джинсы">Заказать</button>
+          </article>
+          <article class="product-card product-card--discount">
+            <span class="product-card__badge product-card__badge--sale">Скидка</span>
+            <a class="product-card__image-link" href="product-jacket.html"><img class="product-card__image" src="images/products/jacket.jpg" alt="Куртка" loading="lazy"></a>
+            <h3 class="product-card__title">Куртка</h3>
+            <p class="product-card__description">Демисезонная куртка из плотной ткани.</p>
+            <p class="product-card__price">Цена: 8 990 руб.</p>
+            <button class="button button--primary product-card__button" type="button" data-order-open data-product="Куртка">Заказать</button>
+          </article>
+          <article class="product-card">
+            <a class="product-card__image-link" href="product-hoodie.html"><img class="product-card__image" src="images/products/hoodie.jpg" alt="Толстовка" loading="lazy"></a>
+            <h3 class="product-card__title">Толстовка</h3>
+            <p class="product-card__description">Тёплая толстовка с капюшоном.</p>
+            <p class="product-card__price">Цена: 3 990 руб.</p>
+            <button class="button button--primary product-card__button" type="button" data-order-open data-product="Толстовка">Заказать</button>
+          </article>
+        </div>  
+      </div>
     </section>
 
-    <section class="section container" id="advantages">
-      <h2 class="section__title">Преимущества концепта</h2>
-      <div class="advantages">
-        <div class="advantages__grid">
-          <div class="advantages__tabs">
-            <label class="advantages__tab">
-              <input class="advantages__radio" type="radio" name="advantage" value="1" checked>
-              <span class="advantages__num">01</span>
-              <span class="advantages__tab-title">Итальянский деним и хлопок</span>
-            </label>
-            <label class="advantages__tab">
-              <input class="advantages__radio" type="radio" name="advantage" value="2">
-              <span class="advantages__num">02</span>
-              <span class="advantages__tab-title">Архитектурный крой и посадка</span>
-            </label>
-            <label class="advantages__tab">
-              <input class="advantages__radio" type="radio" name="advantage" value="3">
-              <span class="advantages__num">03</span>
-              <span class="advantages__tab-title">Армированные швы и фурнитура</span>
-            </label>
-            <label class="advantages__tab">
-              <input class="advantages__radio" type="radio" name="advantage" value="4">
-              <span class="advantages__num">04</span>
-              <span class="advantages__tab-title">Натуральная шерсть и футер</span>
-            </label>
-            <label class="advantages__tab">
-              <input class="advantages__radio" type="radio" name="advantage" value="5">
-              <span class="advantages__num">05</span>
-              <span class="advantages__tab-title">Анатомическая колодка и кожа</span>
-            </label>
-          </div>
+    <section class="screen" id="advantages">
+      <div class="container screen__inner">
+        <h2 class="section__title">Преимущества концепта</h2>
+        <div class="advantages">
+          <div class="advantages__grid">
+            <div class="advantages__tabs">
+              <label class="advantages__tab">
+                <input class="advantages__radio" type="radio" name="advantage" value="1" checked>
+                <span class="advantages__num">01</span>
+                <span class="advantages__tab-title">Итальянский деним и хлопок</span>
+              </label>
+              <label class="advantages__tab">
+                <input class="advantages__radio" type="radio" name="advantage" value="2">
+                <span class="advantages__num">02</span>
+                <span class="advantages__tab-title">Архитектурный крой и посадка</span>
+              </label>
+              <label class="advantages__tab">
+                <input class="advantages__radio" type="radio" name="advantage" value="3">
+                <span class="advantages__num">03</span>
+                <span class="advantages__tab-title">Армированные швы и фурнитура</span>
+              </label>
+              <label class="advantages__tab">
+                <input class="advantages__radio" type="radio" name="advantage" value="4">
+                <span class="advantages__num">04</span>
+                <span class="advantages__tab-title">Натуральная шерсть и футер</span>
+              </label>
+              <label class="advantages__tab">
+                <input class="advantages__radio" type="radio" name="advantage" value="5">
+                <span class="advantages__num">05</span>
+                <span class="advantages__tab-title">Анатомическая колодка и кожа</span>
+              </label>
+              <label class="advantages__tab">
+                <input class="advantages__radio" type="radio" name="advantage" value="6">
+                <span class="advantages__num">06</span>
+                <span class="advantages__tab-title">Базовый гардероб на каждый день</span>
+              </label>
+            </div>
 
-          <div class="advantages__panels">
-            <div class="advantages__panel advantages__panel--1">
-              <img class="advantages__image" src="images/products/jeans.jpg" alt="Итальянский деним" loading="lazy">
-              <div class="advantages__desc">
-                <h3 class="advantages__heading">Премиальные ткани</h3>
-                <p class="advantages__text">Плотный хлопковый деним без синтетических примесей, сохраняющий форму годами и дышащий в любую погоду.</p>
+            <div class="advantages__panels">
+              <div class="advantages__panel advantages__panel--1">
+                <img class="advantages__image" src="images/products/jeans.jpg" alt="Итальянский деним" loading="lazy">
+                <div class="advantages__desc">
+                  <h3 class="advantages__heading">Премиальные ткани</h3>
+                  <p class="advantages__text">Плотный хлопковый деним без синтетических примесей, сохраняющий форму годами и дышащий в любую погоду.</p>
+                </div>
               </div>
-            </div>
-            <div class="advantages__panel advantages__panel--2">
-              <img class="advantages__image" src="images/products/coat.jpg" alt="Архитектурный крой" loading="lazy">
-              <div class="advantages__desc">
-                <h3 class="advantages__heading">Анатомические лекала</h3>
-                <p class="advantages__text">Выверенные линии силуэта обеспечивают свободу движений и безупречную посадку на любой тип фигуры.</p>
+              <div class="advantages__panel advantages__panel--2">
+                <img class="advantages__image" src="images/products/coat.jpg" alt="Архитектурный крой" loading="lazy">
+                <div class="advantages__desc">
+                  <h3 class="advantages__heading">Анатомические лекала</h3>
+                  <p class="advantages__text">Выверенные линии силуэта обеспечивают свободу движений и безупречную посадку на любой тип фигуры.</p>
+                </div>
               </div>
-            </div>
-            <div class="advantages__panel advantages__panel--3">
-              <img class="advantages__image" src="images/products/jacket.jpg" alt="Армированные швы" loading="lazy">
-              <div class="advantages__desc">
-                <h3 class="advantages__heading">Контроль прочности</h3>
-                <p class="advantages__text">Двойная строчка армированными нитями, влагостойкая пропитка верха и металлическая фурнитура высшего класса.</p>
+              <div class="advantages__panel advantages__panel--3">
+                <img class="advantages__image" src="images/products/jacket.jpg" alt="Армированные швы" loading="lazy">
+                <div class="advantages__desc">
+                  <h3 class="advantages__heading">Контроль прочности</h3>
+                  <p class="advantages__text">Двойная строчка армированными нитями, влагостойкая пропитка верха и металлическая фурнитура высшего класса.</p>
+                </div>
               </div>
-            </div>
-            <div class="advantages__panel advantages__panel--4">
-              <img class="advantages__image" src="images/products/sweater.jpg" alt="Натуральная шерсть" loading="lazy">
-              <div class="advantages__desc">
-                <h3 class="advantages__heading">Тактильный комфорт</h3>
-                <p class="advantages__text">Мягчайший начес футера 3-нитки и натуральная шерсть тонкого прядения без эффекта колкости.</p>
+              <div class="advantages__panel advantages__panel--4">
+                <img class="advantages__image" src="images/products/sweater.jpg" alt="Натуральная шерсть" loading="lazy">
+                <div class="advantages__desc">
+                  <h3 class="advantages__heading">Тактильный комфорт</h3>
+                  <p class="advantages__text">Мягчайший начес футера 3-нитки и натуральная шерсть тонкого прядения без эффекта колкости.</p>
+                </div>
               </div>
-            </div>
-            <div class="advantages__panel advantages__panel--5">
-              <img class="advantages__image" src="images/products/chelsea-boots.jpg" alt="Анатомическая колодка" loading="lazy">
-              <div class="advantages__desc">
-                <h3 class="advantages__heading">Эргономичная обувь</h3>
-                <p class="advantages__text">Натуральная гидрофобная кожа, амортизирующая подошва и колодка, разработанная для долгих прогулок.</p>
+              <div class="advantages__panel advantages__panel--5">
+                <img class="advantages__image" src="images/products/chelsea-boots.jpg" alt="Анатомическая колодка" loading="lazy">
+                <div class="advantages__desc">
+                  <h3 class="advantages__heading">Эргономичная обувь</h3>
+                  <p class="advantages__text">Натуральная гидрофобная кожа, амортизирующая подошва и колодка, разработанная для долгих прогулок.</p>
+                </div>
+              </div>
+              <div class="advantages__panel advantages__panel--6">
+                <img class="advantages__image" src="images/products/chinos.jpg" alt="Базовый гардероб" loading="lazy">
+                <div class="advantages__desc">
+                  <h3 class="advantages__heading">Сочетаемость вещей</h3>
+                  <p class="advantages__text">Нейтральные цвета и простые силуэты: любую вещь коллекции можно собрать с другой без долгих раздумий.</p>
+                </div>
               </div>
             </div>
           </div>
@@ -169,6 +188,7 @@
       <div class="site-footer__col">
         <p class="site-footer__copy">&copy; 2026 Учебный проект. Все права защищены.</p>
         <p class="site-footer__meta">Дисциплина: Фронтенд и бэкенд разработка</p>
+        <p class="site-footer__credits">Изображения: <a class="site-footer__link" href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a></p>
       </div>
       <div class="site-footer__col">
         <nav class="site-footer__nav" aria-label="Навигация в подвале">
@@ -176,9 +196,6 @@
             <li class="site-footer__item"><a class="site-footer__link" href="contacts.html">Контакты</a></li>
           </ul>
         </nav>
-      </div>
-      <div class="site-footer__col">
-        <p class="site-footer__credits">Изображения: <a class="site-footer__link" href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a></p>
       </div>
     </div>
   </footer>

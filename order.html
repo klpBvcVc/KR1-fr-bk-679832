@@ -7,8 +7,9 @@
   <title>Оформление заказа - Учебный интернет-магазин</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <script src="js/ui.js"></script>
   <script src="js/main.js" defer></script>
 </head>
 
@@ -22,11 +23,13 @@
           <li class="site-nav__item"><a class="site-nav__link" href="index.html">Главная</a></li>
           <li class="site-nav__item"><a class="site-nav__link" href="catalog.html">Каталог</a></li>
           <li class="site-nav__item"><a class="site-nav__link" href="contacts.html">Контакты</a></li>
-          <li class="site-nav__item"><a class="site-nav__link" href="index.html#popular">Популярные товары</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="index.html#popular">Популярное</a></li>
           <li class="site-nav__item"><a class="site-nav__link" href="index.html#advantages">Преимущества</a></li>
-          <li class="site-nav__item"><a class="site-nav__link" href="index.html#contacts">Обратная связь</a></li>
         </ul>
       </nav>
+      <button class="theme-toggle" type="button" aria-label="Переключить тему оформления" aria-pressed="false" title="Тема: светлая или тёмная">
+        <span class="theme-toggle__icon" aria-hidden="true"></span>
+      </button>
     </div>
   </header>
   
@@ -38,6 +41,33 @@
       <span class="breadcrumbs__item breadcrumbs__item--conditional" id="from-jeans"><a class="breadcrumbs__link" href="product.html">Джинсы</a></span>
       <span class="breadcrumbs__item breadcrumbs__item--conditional" id="from-jacket"><a class="breadcrumbs__link" href="product-jacket.html">Куртка</a></span>
       <span class="breadcrumbs__item breadcrumbs__item--conditional" id="from-hoodie"><a class="breadcrumbs__link" href="product-hoodie.html">Толстовка</a></span>
+      <span class="breadcrumbs__item breadcrumbs__item--conditional" id="from-tshirt"><a class="breadcrumbs__link" href="product-tshirt.html">Футболка базовая</a></span>
+      <span class="breadcrumbs__item breadcrumbs__item--conditional" id="from-plaid-shirt"><a class="breadcrumbs__link" href="product-plaid-shirt.html">Рубашка в клетку</a></span>
+      <span class="breadcrumbs__item breadcrumbs__item--conditional" id="from-sweater"><a class="breadcrumbs__link" href="product-sweater.html">Свитер вязаный</a></span>
+      <span class="breadcrumbs__item breadcrumbs__item--conditional" id="from-longsleeve"><a class="breadcrumbs__link" href="product-longsleeve.html">Лонгслив</a></span>
+      <span class="breadcrumbs__item breadcrumbs__item--conditional" id="from-chinos"><a class="breadcrumbs__link" href="product-chinos.html">Брюки чинос</a></span>
+      <span class="breadcrumbs__item breadcrumbs__item--conditional" id="from-cardigan"><a class="breadcrumbs__link" href="product-cardigan.html">Кардиган</a></span>
+      <span class="breadcrumbs__item breadcrumbs__item--conditional" id="from-bomber"><a class="breadcrumbs__link" href="product-bomber.html">Бомбер</a></span>
+      <span class="breadcrumbs__item breadcrumbs__item--conditional" id="from-coat"><a class="breadcrumbs__link" href="product-coat.html">Пальто шерстяное</a></span>
+      <span class="breadcrumbs__item breadcrumbs__item--conditional" id="from-chelsea-boots"><a class="breadcrumbs__link" href="product-chelsea-boots.html">Ботинки челси</a></span>
+      <span class="breadcrumbs__item breadcrumbs__item--conditional" id="from-sneakers"><a class="breadcrumbs__link" href="product-sneakers.html">Утеплённые кроссовки</a></span>
+      <span class="breadcrumbs__item breadcrumbs__item--conditional" id="from-lace-boots"><a class="breadcrumbs__link" href="product-lace-boots.html">Ботинки на шнуровке</a></span>
+      <span class="breadcrumbs__item breadcrumbs__item--conditional" id="from-rain-boots"><a class="breadcrumbs__link" href="product-rain-boots.html">Резиновые сапоги</a></span>
+      <span class="breadcrumbs__item breadcrumbs__item--conditional" id="from-shorts"><a class="breadcrumbs__link" href="product-shorts.html">Шорты хлопковые</a></span>
+      <span class="breadcrumbs__item breadcrumbs__item--conditional" id="from-skirt"><a class="breadcrumbs__link" href="product-skirt.html">Юбка миди в клетку</a></span>
+      <span class="breadcrumbs__item breadcrumbs__item--conditional" id="from-dress"><a class="breadcrumbs__link" href="product-dress.html">Платье-рубашка в полоску</a></span>
+      <span class="breadcrumbs__item breadcrumbs__item--conditional" id="from-vest"><a class="breadcrumbs__link" href="product-vest.html">Жилет стёганый</a></span>
+      <span class="breadcrumbs__item breadcrumbs__item--conditional" id="from-puffer"><a class="breadcrumbs__link" href="product-puffer.html">Пуховик</a></span>
+      <span class="breadcrumbs__item breadcrumbs__item--conditional" id="from-scarf"><a class="breadcrumbs__link" href="product-scarf.html">Шарф в полоску</a></span>
+      <span class="breadcrumbs__item breadcrumbs__item--conditional" id="from-beanie"><a class="breadcrumbs__link" href="product-beanie.html">Шапка вязаная</a></span>
+      <span class="breadcrumbs__item breadcrumbs__item--conditional" id="from-polo"><a class="breadcrumbs__link" href="product-polo.html">Футболка поло</a></span>
+      <span class="breadcrumbs__item breadcrumbs__item--conditional" id="from-gloves"><a class="breadcrumbs__link" href="product-gloves.html">Перчатки кожаные</a></span>
+      <span class="breadcrumbs__item breadcrumbs__item--conditional" id="from-canvas-sneakers"><a class="breadcrumbs__link" href="product-canvas-sneakers.html">Кеды текстильные</a></span>
+      <span class="breadcrumbs__item breadcrumbs__item--conditional" id="from-slides"><a class="breadcrumbs__link" href="product-slides.html">Шлёпанцы с декором</a></span>
+      <span class="breadcrumbs__item breadcrumbs__item--conditional" id="from-sandals"><a class="breadcrumbs__link" href="product-sandals.html">Сандалии на пробковой подошве</a></span>
+      <span class="breadcrumbs__item breadcrumbs__item--conditional" id="from-loafers"><a class="breadcrumbs__link" href="product-loafers.html">Лоферы-мокасины кожаные</a></span>
+      <span class="breadcrumbs__item breadcrumbs__item--conditional" id="from-running"><a class="breadcrumbs__link" href="product-running.html">Кроссовки беговые</a></span>
+      <span class="breadcrumbs__item breadcrumbs__item--conditional" id="from-winter-boots"><a class="breadcrumbs__link" href="product-winter-boots.html">Ботинки зимние</a></span>
       <span class="breadcrumbs__current">Оформление заказа</span>
     </nav>
   
@@ -101,6 +131,7 @@
       <div class="site-footer__col">
         <p class="site-footer__copy">&copy; 2026 Учебный проект. Все права защищены.</p>
         <p class="site-footer__meta">Дисциплина: Фронтенд и бэкенд разработка</p>
+        <p class="site-footer__credits">Изображения: <a class="site-footer__link" href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a></p>
       </div>
       <div class="site-footer__col">
         <nav class="site-footer__nav" aria-label="Навигация в подвале">
@@ -108,9 +139,6 @@
             <li class="site-footer__item"><a class="site-footer__link" href="contacts.html">Контакты</a></li>
           </ul>
         </nav>
-      </div>
-      <div class="site-footer__col">
-        <p class="site-footer__credits">Изображения: <a class="site-footer__link" href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a></p>
       </div>
     </div>
   </footer>
