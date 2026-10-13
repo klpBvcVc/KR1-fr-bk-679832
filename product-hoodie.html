@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Подробная информация про толстовку с капюшоном.">
+  <meta name="description" content="Тёплая толстовка с капюшоном: характеристики, размеры и цена.">
   <title>Толстовка - Учебный интернет-магазин</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <script src="js/ui.js"></script>
 </head>
 
 <body id="top">
@@ -21,11 +22,13 @@
           <li class="site-nav__item"><a class="site-nav__link" href="index.html">Главная</a></li>
           <li class="site-nav__item"><a class="site-nav__link site-nav__link--active" href="catalog.html">Каталог</a></li>
           <li class="site-nav__item"><a class="site-nav__link" href="contacts.html">Контакты</a></li>
-          <li class="site-nav__item"><a class="site-nav__link" href="index.html#popular">Популярные товары</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="index.html#popular">Популярное</a></li>
           <li class="site-nav__item"><a class="site-nav__link" href="index.html#advantages">Преимущества</a></li>
-          <li class="site-nav__item"><a class="site-nav__link" href="index.html#contacts">Обратная связь</a></li>
         </ul>
       </nav>
+      <button class="theme-toggle" type="button" aria-label="Переключить тему оформления" aria-pressed="false" title="Тема: светлая или тёмная">
+        <span class="theme-toggle__icon" aria-hidden="true"></span>
+      </button>
     </div>
   </header>
   
@@ -37,7 +40,9 @@
     </nav>
   
     <section class="product">
-      <img class="product__image" src="images/products/hoodie.jpg" alt="Тёплая толстовка с капюшоном">
+      <div class="product__media">
+        <img class="product__image" src="images/products/hoodie.jpg" alt="Тёплая толстовка с капюшоном">
+      </div>
       <div class="product__info">
         <h1 class="product__title">Толстовка</h1>
         <p class="product__price">3 990 руб.</p>
@@ -93,6 +98,97 @@
       </table>
     </section>
 
+    <details class="size-guide">
+      <summary class="size-guide__summary">Таблица размеров</summary>
+      <div class="size-guide__content">
+        <table class="product-table">
+          <caption class="product-table__caption">Размеры верхней одежды и трикотажа</caption>
+          <thead>
+            <tr class="product-table__row">
+              <th class="product-table__head" scope="col">Размер</th>
+              <th class="product-table__head" scope="col">Российский размер</th>
+              <th class="product-table__head" scope="col">Обхват груди, см</th>
+              <th class="product-table__head" scope="col">Обхват талии, см</th>
+            </tr>
+          </thead>
+          <tbody class="product-table__body">
+            <tr class="product-table__row">
+      <th class="product-table__head" scope="row">XS</th>
+      <td class="product-table__cell">42</td>
+      <td class="product-table__cell">84-88</td>
+      <td class="product-table__cell">68-72</td>
+    </tr>
+            <tr class="product-table__row">
+      <th class="product-table__head" scope="row">S</th>
+      <td class="product-table__cell">44</td>
+      <td class="product-table__cell">88-92</td>
+      <td class="product-table__cell">72-76</td>
+    </tr>
+            <tr class="product-table__row">
+      <th class="product-table__head" scope="row">M</th>
+      <td class="product-table__cell">46</td>
+      <td class="product-table__cell">92-96</td>
+      <td class="product-table__cell">76-80</td>
+    </tr>
+            <tr class="product-table__row">
+      <th class="product-table__head" scope="row">L</th>
+      <td class="product-table__cell">48</td>
+      <td class="product-table__cell">96-100</td>
+      <td class="product-table__cell">80-84</td>
+    </tr>
+            <tr class="product-table__row">
+      <th class="product-table__head" scope="row">XL</th>
+      <td class="product-table__cell">50</td>
+      <td class="product-table__cell">100-104</td>
+      <td class="product-table__cell">84-88</td>
+    </tr>
+            <tr class="product-table__row">
+      <th class="product-table__head" scope="row">XXL</th>
+      <td class="product-table__cell">52</td>
+      <td class="product-table__cell">104-108</td>
+      <td class="product-table__cell">88-92</td>
+    </tr>
+            <tr class="product-table__row">
+      <th class="product-table__head" scope="row">XXXL</th>
+      <td class="product-table__cell">54</td>
+      <td class="product-table__cell">108-112</td>
+      <td class="product-table__cell">92-96</td>
+    </tr>
+          </tbody>
+        </table>
+        <p class="size-guide__more"><a href="size.html#size-top">Как снять мерки и выбрать размер</a></p>
+      </div>
+    </details>
+
+    <section class="section related">
+      <h2 class="section__title">Похожие товары</h2>
+      <div class="products-grid">
+        <article class="product-card product-card--discount">
+          <span class="product-card__badge product-card__badge--sale">Скидка</span>
+          <a class="product-card__image-link" href="product-dress.html"><img class="product-card__image" src="images/products/dress.jpg" alt="Платье-рубашка в полоску" loading="lazy"></a>
+          <h3 class="product-card__title">Платье-рубашка в полоску</h3>
+          <p class="product-card__description">Платье-рубашка из лёгкой ткани с поясом.</p>
+          <p class="product-card__price">Цена: 3 990 руб.</p>
+          <a class="button button--primary product-card__button" href="product-dress.html">Подробнее</a>
+        </article>
+        <article class="product-card">
+          <span class="product-card__badge product-card__badge--new">Новинка</span>
+          <a class="product-card__image-link" href="product-cardigan.html"><img class="product-card__image" src="images/products/cardigan.jpg" alt="Кардиган" loading="lazy"></a>
+          <h3 class="product-card__title">Кардиган</h3>
+          <p class="product-card__description">Тёплый кардиган на пуговицах, средней плотности.</p>
+          <p class="product-card__price">Цена: 4 290 руб.</p>
+          <a class="button button--primary product-card__button" href="product-cardigan.html">Подробнее</a>
+        </article>
+        <article class="product-card">
+          <span class="product-card__badge product-card__badge--new">Новинка</span>
+          <a class="product-card__image-link" href="product-sweater.html"><img class="product-card__image" src="images/products/sweater.jpg" alt="Свитер вязаный" loading="lazy"></a>
+          <h3 class="product-card__title">Свитер вязаный</h3>
+          <p class="product-card__description">Свитер из шерстяной пряжи, воротник под горло.</p>
+          <p class="product-card__price">Цена: 4 490 руб.</p>
+          <a class="button button--primary product-card__button" href="product-sweater.html">Подробнее</a>
+        </article>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer">
@@ -100,6 +196,7 @@
       <div class="site-footer__col">
         <p class="site-footer__copy">&copy; 2026 Учебный проект. Все права защищены.</p>
         <p class="site-footer__meta">Дисциплина: Фронтенд и бэкенд разработка</p>
+        <p class="site-footer__credits">Изображения: <a class="site-footer__link" href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a></p>
       </div>
       <div class="site-footer__col">
         <nav class="site-footer__nav" aria-label="Навигация в подвале">
@@ -107,9 +204,6 @@
             <li class="site-footer__item"><a class="site-footer__link" href="contacts.html">Контакты</a></li>
           </ul>
         </nav>
-      </div>
-      <div class="site-footer__col">
-        <p class="site-footer__credits">Изображения: <a class="site-footer__link" href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a></p>
       </div>
     </div>
   </footer>
