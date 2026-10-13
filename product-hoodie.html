@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Подробная информация про толстовку с капюшоном.">
+  <title>Толстовка - Учебный интернет-магазин</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body id="top">
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="site-header__logo" href="index.html">ShopProject</a>
+
+      <nav class="site-nav" aria-label="Основная навигация">
+        <ul class="site-nav__list">
+          <li class="site-nav__item"><a class="site-nav__link" href="index.html">Главная</a></li>
+          <li class="site-nav__item"><a class="site-nav__link site-nav__link--active" href="catalog.html">Каталог</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="contacts.html">Контакты</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="index.html#popular">Популярные товары</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="index.html#advantages">Преимущества</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="index.html#contacts">Обратная связь</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  
+  <main class="container">
+    <nav class="breadcrumbs" aria-label="Хлебные крошки">
+      <a class="breadcrumbs__link" href="index.html">Главная</a>
+      <a class="breadcrumbs__link" href="catalog.html">Каталог</a>
+      <span class="breadcrumbs__current">Толстовка</span>
+    </nav>
+  
+    <section class="product">
+      <img class="product__image" src="images/products/hoodie.jpg" alt="Тёплая толстовка с капюшоном">
+      <div class="product__info">
+        <h1 class="product__title">Толстовка</h1>
+        <p class="product__price">3 990 руб.</p>
+        <p class="product__description">Тёплая толстовка свободного кроя с мягким начесом и капюшоном. Плотный хлопковый трикотаж (футер 3-нитка), эластичные манжеты и удобный карман-кенгуру для максимального комфорта.</p>
+        <a class="button button--primary" href="order.html#from-hoodie">Оформить заказ</a>
+      </div>
+    </section>
+  
+    <section class="section">
+      <h2 class="section__title">Характеристики</h2>
+      <table class="product-table">
+        <caption class="product-table__caption">Характеристики толстовки</caption>
+        <thead>
+          <tr class="product-table__row">
+            <th class="product-table__head" scope="col">Параметр</th>
+            <th class="product-table__head" scope="col">Значение</th>
+          </tr>
+        </thead>
+        <tbody class="product-table__body">
+          <tr class="product-table__row">
+            <th class="product-table__head" scope="row">Состав</th>
+            <td class="product-table__cell">80% хлопок, 20% полиэстер (футер 3-нитка)</td>
+          </tr>
+          <tr class="product-table__row">
+            <th class="product-table__head" scope="row">Плотность ткани</th>
+            <td class="product-table__cell">330 г/м&sup2;</td>
+          </tr>
+          <tr class="product-table__row">
+            <th class="product-table__head" scope="row">Цвет</th>
+            <td class="product-table__cell">Серый меланж</td>
+          </tr>
+          <tr class="product-table__row">
+            <th class="product-table__head" scope="row">Крой</th>
+            <td class="product-table__cell">Свободный (Oversize)</td>
+          </tr>
+          <tr class="product-table__row">
+            <th class="product-table__head" scope="row">Сезон</th>
+            <td class="product-table__cell">Всесезонный</td>
+          </tr>
+          <tr class="product-table__row">
+            <th class="product-table__head" scope="row">Размеры</th>
+            <td class="product-table__cell">S, M, L, XL, XXL</td>
+          </tr>
+          <tr class="product-table__row">
+            <th class="product-table__head" scope="row">Страна производства</th>
+            <td class="product-table__cell">Россия</td>
+          </tr>
+          <tr class="product-table__row">
+            <th class="product-table__head" scope="row">Уход</th>
+            <td class="product-table__cell">Машинная стирка при 30 &deg;C, глажка с изнанки</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <div class="site-footer__col">
+        <p class="site-footer__copy">&copy; 2026 Учебный проект. Все права защищены.</p>
+        <p class="site-footer__meta">Дисциплина: Фронтенд и бэкенд разработка</p>
+      </div>
+      <div class="site-footer__col">
+        <nav class="site-footer__nav" aria-label="Навигация в подвале">
+          <ul class="site-footer__list">
+            <li class="site-footer__item"><a class="site-footer__link" href="contacts.html">Контакты</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="site-footer__col">
+        <p class="site-footer__credits">Изображения: <a class="site-footer__link" href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <a class="to-top" href="#top" aria-label="Наверх">&uarr;</a>
+</body>
+</html>

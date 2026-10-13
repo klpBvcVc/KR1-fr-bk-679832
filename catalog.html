@@ -5,11 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Каталог товаров учебного интернет-магазина.">
   <title>Каталог товаров - Учебный интернет-магазин</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body id="top">
   <header class="site-header">
-    <div class="site-header__inner">
+    <div class="container site-header__inner">
       <a class="site-header__logo" href="index.html">ShopProject</a>
 
       <nav class="site-nav" aria-label="Основная навигация">
@@ -17,22 +20,22 @@
           <li class="site-nav__item"><a class="site-nav__link" href="index.html">Главная</a></li>
           <li class="site-nav__item"><a class="site-nav__link site-nav__link--active" href="catalog.html">Каталог</a></li>
           <li class="site-nav__item"><a class="site-nav__link" href="contacts.html">Контакты</a></li>
-          <li class="site-nav__item"><a class="site-nav__link" href="index.html#advantages">Преимущества</a></li>
           <li class="site-nav__item"><a class="site-nav__link" href="index.html#popular">Популярные товары</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="index.html#advantages">Преимущества</a></li>
           <li class="site-nav__item"><a class="site-nav__link" href="index.html#contacts">Обратная связь</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <main>
+  <main class="container">
     <nav class="breadcrumbs" aria-label="Хлебные крошки">
       <a class="breadcrumbs__link" href="index.html">Главная</a>
       <span class="breadcrumbs__current">Каталог</span>
     </nav>
 
     <section class="section">
-      <h1>Каталог товаров</h1>
+      <h1 class="section__title">Каталог товаров</h1>
       <p>
         На этой странице представлен учебный каталог товаров.
         В дальнейшем здесь будут добавлены фильтры, сортировка и более
@@ -91,19 +94,19 @@
 
           <article class="product-card product-card--discount">
             <span class="product-card__badge product-card__badge--sale">Скидка</span>
-            <img class="product-card__image" src="images/products/jacket.jpg" alt="Куртка" loading="lazy">
+            <a class="product-card__image-link" href="product-jacket.html"><img class="product-card__image" src="images/products/jacket.jpg" alt="Куртка" loading="lazy"></a>
             <h3 class="product-card__title">Куртка</h3>
             <p class="product-card__description">Демисезонная куртка из плотной ткани.</p>
             <p class="product-card__price">Цена: 8 990 руб.</p>
-            <a class="button button--primary product-card__button" href="index.html#popular">Подробнее</a>
+            <a class="button button--primary product-card__button" href="product-jacket.html">Подробнее</a>
           </article>
 
           <article class="product-card">
-            <img class="product-card__image" src="images/products/hoodie.jpg" alt="Толстовка" loading="lazy">
+            <a class="product-card__image-link" href="product-hoodie.html"><img class="product-card__image" src="images/products/hoodie.jpg" alt="Толстовка" loading="lazy"></a>
             <h3 class="product-card__title">Толстовка</h3>
             <p class="product-card__description">Тёплая толстовка с капюшоном.</p>
             <p class="product-card__price">Цена: 3 990 руб.</p>
-            <a class="button button--primary product-card__button" href="index.html#popular">Подробнее</a>
+            <a class="button button--primary product-card__button" href="product-hoodie.html">Подробнее</a>
           </article>
 
           <article class="product-card">
@@ -212,8 +215,24 @@
   </main>
 
   <footer class="site-footer">
-    <p>&copy; 2026 Учебный проект. Все права защищены.</p>
-    <p>Дисциплина: Фронтенд и бэкенд разработка</p>
+    <div class="container site-footer__inner">
+      <div class="site-footer__col">
+        <p class="site-footer__copy">&copy; 2026 Учебный проект. Все права защищены.</p>
+        <p class="site-footer__meta">Дисциплина: Фронтенд и бэкенд разработка</p>
+      </div>
+      <div class="site-footer__col">
+        <nav class="site-footer__nav" aria-label="Навигация в подвале">
+          <ul class="site-footer__list">
+            <li class="site-footer__item"><a class="site-footer__link" href="contacts.html">Контакты</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="site-footer__col">
+        <p class="site-footer__credits">Изображения: <a class="site-footer__link" href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a></p>
+      </div>
+    </div>
   </footer>
+
+  <a class="to-top" href="#top" aria-label="Наверх">&uarr;</a>
 </body>
 </html>

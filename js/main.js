@@ -35,38 +35,42 @@ const orderForm = document.getElementById('order-form');
 // Получаем сообщение об успешной отправке
 const successMessage = document.getElementById('success-message');
 
-// Обрабатываем отправку формы
-orderForm.addEventListener('submit', (event) => {
-    event.preventDefault(); // Пока что отменяем отправку, так как бекенда нет.
-    // Сбрасываем предыдущие признаки ошибок
-    const formElements = Array.from(orderForm.elements);
-    formElements.forEach((element) => {
-        if (element.willValidate) {
-            element.removeAttribute('aria-invalid');
-        }
-    });
-
-    // Проверяем валидность формы
-    if (!orderForm.checkValidity()) {
+// Обрабатываем отправку формы (если форма присутствует на странице)
+if (orderForm) {
+    orderForm.addEventListener('submit', (event) => {
+        event.preventDefault(); // Пока что отменяем отправку, так как бекенда нет.
+        // Сбрасываем предыдущие признаки ошибок
+        const formElements = Array.from(orderForm.elements);
         formElements.forEach((element) => {
-            if (element.willValidate && !element.checkValidity()) {
-                element.setAttribute('aria-invalid', 'true');
+            if (element.willValidate) {
+                element.removeAttribute('aria-invalid');
             }
         });
 
-        // Показываем стандартные сообщения об ошибках
-        orderForm.reportValidity();
-        return;
-    }
+        // Проверяем валидность формы
+        if (!orderForm.checkValidity()) {
+            formElements.forEach((element) => {
+                if (element.willValidate && !element.checkValidity()) {
+                    element.setAttribute('aria-invalid', 'true');
+                }
+            });
 
-    // Соо об успешной отправке
-    successMessage.hidden = false;
+            // Показываем стандартные сообщения об ошибках
+            orderForm.reportValidity();
+            return;
+        }
 
-    // Очистка формы
-    orderForm.reset();
+        // Соо об успешной отправке
+        if (successMessage) {
+            successMessage.hidden = false;
+        }
 
-    // Закрытие модального окна
-    if (orderDialog) {
-        orderDialog.close();
-    }
-});
+        // Очистка формы
+        orderForm.reset();
+
+        // Закрытие модального окна
+        if (orderDialog) {
+            orderDialog.close();
+        }
+    });
+}
