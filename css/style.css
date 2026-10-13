@@ -3,19 +3,21 @@
    =============================== */
 
 :root {
-  /* Основные цвета проекта */
-  --color-bg: #ffffff;
-  --color-text: #222222;
+  /* Основные цвета проекта (Палитра «Благородный бордо и слоновая кость») */
+  --color-bg: #f9f8f6;
+  --color-text: #2a2a2a;
   --color-muted: #666666;
-  --color-primary: #0057b8;
-  --color-primary-dark: #003f86;
-  --color-border: #dddddd;
-  --color-surface: #f7f7f7;
-  --color-surface-accent: #eef5ff;
+  --color-primary: #8b1e2d;
+  --color-primary-dark: #6e1320;
+  --color-border: #e2ded8;
+  --color-surface: #f1ede6;
+  --color-surface-accent: #fbf5f5;
   --color-danger: #b00020;
   --color-success: #168a2f;
   --color-success-bg: #eefaf0;
   --color-white: #ffffff;
+  --color-accent: #8a6a1f;
+  --color-overlay: rgba(32, 12, 16, 0.55);
 
   /* Отступы */
   --space-xs: 4px;
@@ -23,25 +25,40 @@
   --space-md: 16px;
   --space-lg: 24px;
   --space-xl: 32px;
+  --space-2xl: 48px;
 
-  /* Скругления */
-  --radius-sm: 6px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
+  /* Скругления (Строгая архитектурная геометрия без скруглений) */
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
 
   /* Размеры */
   --container-width: 1100px;
+  --header-height: 73px;
+
+  /* Типографика */
+  --font-heading: 'Montserrat', Arial, sans-serif;
+  --font-body: 'Inter', Arial, sans-serif;
+  --font-size-sm: 14px;
+
+  /* Тени */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 10px 24px rgba(0, 0, 0, 0.08);
 }
 
-/* Плавная прокрутка к якорям */
+/* Плавная прокрутка к якорям с учетом высоты липкой шапки */
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: var(--header-height);
 }
 
-/* Подсветка элемента, на который указывает якорь */
-:target {
-  outline: 2px dashed var(--color-primary);
-  outline-offset: 4px;
+/* Подсветка цели якоря: без рамки, заголовок секции окрашивается в основной цвет */
+.section:target .section__title {
+  color: var(--color-primary);
+}
+
+.site-footer:target {
+  background-color: var(--color-surface-accent);
 }
 
 /* ===============================
@@ -53,21 +70,37 @@ html {
 }
 
 body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: var(--font-body);
   line-height: 1.5;
   color: var(--color-text);
   background-color: var(--color-bg);
 }
 
-main {
-  padding: var(--space-lg);
+h1,
+h2,
+h3,
+.site-header__logo,
+.section__title {
+  font-family: var(--font-heading);
 }
 
-.site-footer {
-  padding: var(--space-lg);
-  background-color: var(--color-surface);
+main {
+  flex: 1;
 }
+
+.container {
+  width: 100%;
+  max-width: var(--container-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-lg);
+  padding-right: var(--space-lg);
+}
+
 
 /* ===============================
    3. Общие элементы интерфейса
@@ -94,6 +127,7 @@ a:focus-visible {
   font: inherit;
   text-decoration: none;
   cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
 .button--primary {
@@ -134,13 +168,76 @@ a:focus-visible {
 /* --- Шапка и навигация --- */
 
 .site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
   background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+
+/* --- Промо-плашка над шапкой (в потоке, уходит при прокрутке сама) --- */
+
+.top-bar {
+  padding: var(--space-sm) 0;
+  background-color: var(--color-primary-dark);
+  color: var(--color-white);
+  font-size: var(--font-size-sm);
+  text-align: center;
+}
+
+/* Закрытие без JS: отмеченный checkbox внутри плашки скрывает её целиком */
+.top-bar:has(.top-bar__toggle:checked) {
+  display: none;
+}
+
+.top-bar__inner {
+  position: relative;
+  padding-left: var(--space-2xl);
+  padding-right: var(--space-2xl);
+}
+
+.top-bar__code {
+  letter-spacing: 0.5px;
+}
+
+.top-bar__close {
+  position: absolute;
+  top: 50%;
+  right: var(--space-lg);
+  padding: 0 var(--space-sm);
+  transform: translateY(-50%);
+  font-size: 20px;
+  line-height: 1;
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.top-bar__close:hover {
+  opacity: 1;
+}
+
+.top-bar__close:has(:focus-visible) {
+  outline: 2px solid var(--color-white);
+  outline-offset: 2px;
+}
+
+/* Сам checkbox растянут на метку и невидим: кликается и фокусируется с клавиатуры */
+.top-bar__toggle {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
 }
 
 .site-header__inner {
-  max-width: var(--container-width);
-  margin: 0 auto;
-  padding: var(--space-lg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-md);
+  padding-top: var(--space-md);
+  padding-bottom: var(--space-md);
 }
 
 .site-header__logo {
@@ -152,11 +249,11 @@ a:focus-visible {
 .site-nav__list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   gap: var(--space-md);
   padding: 0;
-  margin: var(--space-md) 0 0;
+  margin: 0;
   list-style: none;
 }
 
@@ -166,6 +263,7 @@ a:focus-visible {
   color: var(--color-primary);
   text-decoration: none;
   border-radius: var(--radius-sm);
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .site-nav__link:hover {
@@ -187,10 +285,11 @@ a:focus-visible {
 .breadcrumbs {
   max-width: var(--container-width);
   margin: 0 auto var(--space-md);
+  padding-top: var(--space-lg);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  font-size: 14px;
+  font-size: var(--font-size-sm);
   color: var(--color-muted);
 }
 
@@ -217,11 +316,44 @@ a:focus-visible {
 /* --- Секции --- */
 
 .hero {
-  max-width: var(--container-width);
-  margin: 0 auto var(--space-xl);
-  padding: var(--space-xl) var(--space-lg);
-  background-color: var(--color-surface-accent);
-  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 75vh;
+  margin: 0 0 var(--space-xl);
+  padding: var(--space-2xl) 0;
+  text-align: center;
+  background-color: var(--color-text);
+  background-image:
+    linear-gradient(var(--color-overlay), var(--color-overlay)),
+    url('../images/hero-bg.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.hero__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero__title {
+  margin: 0 0 var(--space-md);
+  font-size: 3rem;
+  line-height: 1.2;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-white);
+}
+
+.hero__text {
+  max-width: 650px;
+  margin: 0 auto var(--space-lg);
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: var(--color-white);
 }
 
 .section {
@@ -231,6 +363,7 @@ a:focus-visible {
 
 .section__title {
   margin-top: 0;
+  letter-spacing: 1px;
 }
 
 /* --- Карточки товаров --- */
@@ -249,18 +382,17 @@ a:focus-visible {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   background-color: var(--color-bg);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
 .product-card:hover {
-  border-color: var(--color-primary);
-}
-
-.product-card--featured {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
   border-color: var(--color-primary);
 }
 
 .product-card--discount {
-  border-color: var(--color-danger);
+  border-color: var(--color-primary);
 }
 
 .product-card__title {
@@ -279,7 +411,7 @@ a:focus-visible {
 }
 
 .product-card--discount .product-card__price {
-  color: var(--color-danger);
+  color: var(--color-primary);
 }
 
 .product-card__button {
@@ -304,16 +436,16 @@ a:focus-visible {
   padding: var(--space-xs) var(--space-sm);
   border-radius: var(--radius-sm);
   color: var(--color-white);
-  font-size: 14px;
+  font-size: var(--font-size-sm);
   font-weight: 700;
 }
 
 .product-card__badge--sale {
-  background-color: var(--color-danger);
+  background-color: var(--color-primary);
 }
 
 .product-card__badge--new {
-  background-color: var(--color-success);
+  background-color: var(--color-accent);
 }
 
 /* --- Страница каталога --- */
@@ -349,8 +481,10 @@ a:focus-visible {
 
 .product__image {
   width: 100%;
+  aspect-ratio: 1 / 1;
   border-radius: var(--radius-md);
-  object-fit: contain;
+  object-fit: cover;
+  object-position: center 60%;
 }
 
 .product__title {
@@ -418,14 +552,158 @@ a:focus-visible {
   font: inherit;
 }
 
-/* --- Дополнительный блок --- */
+/* --- Интерактивные преимущества (вкладки без JS: radio внутри метки + :has) --- */
+
+.advantages {
+  margin: var(--space-xl) auto;
+}
+
+.advantages__grid {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  gap: var(--space-xl);
+  align-items: stretch;
+  padding: var(--space-lg);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+}
+
+.advantages__tabs {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.advantages__tab {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid transparent;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Сам radio скрыт, но остаётся доступным и переключается стрелками с клавиатуры */
+.advantages__radio {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.advantages__tab:hover {
+  background-color: var(--color-surface-accent);
+  border-left-color: var(--color-muted);
+}
+
+.advantages__tab:has(.advantages__radio:checked) {
+  background-color: var(--color-surface-accent);
+  border-left-color: var(--color-primary);
+}
+
+.advantages__tab:has(.advantages__radio:focus-visible) {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.advantages__num {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: var(--font-size-sm);
+  color: var(--color-muted);
+}
+
+.advantages__tab-title {
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--color-text);
+}
+
+.advantages__tab:has(.advantages__radio:checked) .advantages__num,
+.advantages__tab:has(.advantages__radio:checked) .advantages__tab-title {
+  color: var(--color-primary);
+}
+
+.advantages__panels {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+}
+
+.advantages__panel {
+  display: none;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Показываем панель, номер которой совпал с value отмеченного radio */
+.advantages:has([value="1"]:checked) .advantages__panel--1,
+.advantages:has([value="2"]:checked) .advantages__panel--2,
+.advantages:has([value="3"]:checked) .advantages__panel--3,
+.advantages:has([value="4"]:checked) .advantages__panel--4,
+.advantages:has([value="5"]:checked) .advantages__panel--5 {
+  display: flex;
+}
+
+.advantages__image {
+  display: block;
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+}
+
+.advantages__desc {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--space-xs);
+  padding: var(--space-lg);
+}
+
+.advantages__heading {
+  margin: 0;
+  font-size: 1.2rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.advantages__text {
+  margin: 0;
+  line-height: 1.5;
+  color: var(--color-muted);
+}
+
+/* --- Информационная плашка --- */
 
 .aside-info {
   max-width: var(--container-width);
-  margin: 0 auto var(--space-xl);
-  padding: var(--space-md);
-  border-left: 4px solid var(--color-primary);
+  margin: var(--space-xl) auto;
+  padding: var(--space-xl) var(--space-lg);
   background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  text-align: center;
+}
+
+.aside-info__title {
+  margin: 0 0 var(--space-sm);
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.aside-info__text {
+  max-width: 750px;
+  margin: 0 auto;
+  font-size: var(--font-size-sm);
+  color: var(--color-muted);
+  line-height: 1.6;
 }
 
 /* ===============================
@@ -473,10 +751,6 @@ a:focus-visible {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
   font: inherit;
-}
-
-.order-form__input--checkbox {
-  width: auto;
 }
 
 .order-form__hint {
@@ -553,7 +827,7 @@ a:focus-visible {
   flex-shrink: 0;
   width: 44px;
   height: 24px;
-  border-radius: 12px;
+  border-radius: var(--radius-sm);
   background-color: var(--color-border);
   cursor: pointer;
   transition: background-color 0.2s;
@@ -566,7 +840,7 @@ a:focus-visible {
   left: 3px;
   width: 18px;
   height: 18px;
-  border-radius: 50%;
+  border-radius: var(--radius-sm);
   background-color: var(--color-white);
   transition: transform 0.2s;
 }
@@ -621,4 +895,83 @@ a:focus-visible {
   padding: var(--space-md);
   border-left: 4px solid var(--color-success);
   background-color: var(--color-success-bg);
+}
+
+/* ===============================
+6. Подвал сайта
+ =============================== */
+
+.site-footer {
+  padding: var(--space-lg) 0;
+  background-color: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+}
+
+.site-footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-lg);
+}
+
+.site-footer__copy,
+.site-footer__meta,
+.site-footer__credits {
+  margin: 0 0 var(--space-xs);
+  font-size: var(--font-size-sm);
+  color: var(--color-muted);
+}
+
+.site-footer__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: var(--space-md);
+}
+
+.site-footer__link {
+  color: var(--color-muted);
+  text-decoration: none;
+}
+
+.site-footer__link:hover {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+/* ===============================
+   7. Фиксированные элементы
+   =============================== */
+
+.to-top {
+  position: fixed;
+  right: var(--space-lg);
+  bottom: var(--space-lg);
+  z-index: 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background-color: var(--color-primary);
+  border: 1px solid var(--color-primary-dark);
+  color: var(--color-white);
+  font-size: 20px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: var(--shadow-md);
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.to-top:hover {
+  background-color: var(--color-primary-dark);
+  color: var(--color-white);
+  transform: translateY(-2px);
+}
+
+.to-top:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
 }
