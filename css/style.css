@@ -991,6 +991,7 @@ a:focus-visible {
 }
 
 .order-form__input,
+.order-form__select,
 .order-form__textarea {
   width: 100%;
   padding: 10px 12px;
@@ -1006,17 +1007,20 @@ a:focus-visible {
 }
 
 .order-form__input:hover,
+.order-form__select:hover,
 .order-form__textarea:hover {
   border-color: var(--color-primary);
 }
 
 .order-form__input:focus-visible,
+.order-form__select:focus-visible,
 .order-form__textarea:focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 3px;
 }
 
 .order-form__input[aria-invalid="true"],
+.order-form__select[aria-invalid="true"],
 .order-form__textarea[aria-invalid="true"] {
   border-color: var(--color-danger);
 }
