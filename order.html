@@ -92,6 +92,47 @@
         </div>
 
         <div class="order-form__field">
+          <label class="order-form__label" for="product">Товар</label>
+          <select class="order-form__select" id="product" name="product" required>
+            <option value="">Выберите товар</option>
+            <optgroup label="Одежда">
+              <option value="jeans">Джинсы</option>
+              <option value="jacket">Куртка</option>
+              <option value="hoodie">Толстовка</option>
+              <option value="tshirt">Футболка базовая</option>
+              <option value="plaid-shirt">Рубашка в клетку</option>
+              <option value="sweater">Свитер вязаный</option>
+              <option value="longsleeve">Лонгслив</option>
+              <option value="chinos">Брюки чинос</option>
+              <option value="cardigan">Кардиган</option>
+              <option value="bomber">Бомбер</option>
+              <option value="coat">Пальто шерстяное</option>
+              <option value="shorts">Шорты хлопковые</option>
+              <option value="skirt">Юбка миди в клетку</option>
+              <option value="dress">Платье-рубашка в полоску</option>
+              <option value="vest">Жилет стёганый</option>
+              <option value="puffer">Пуховик</option>
+              <option value="scarf">Шарф в полоску</option>
+              <option value="beanie">Шапка вязаная</option>
+              <option value="polo">Футболка поло</option>
+              <option value="gloves">Перчатки кожаные</option>
+            </optgroup>
+            <optgroup label="Обувь">
+              <option value="chelsea-boots">Ботинки челси</option>
+              <option value="sneakers">Утеплённые кроссовки</option>
+              <option value="lace-boots">Ботинки на шнуровке</option>
+              <option value="rain-boots">Резиновые сапоги</option>
+              <option value="canvas-sneakers">Кеды текстильные</option>
+              <option value="slides">Шлёпанцы с декором</option>
+              <option value="sandals">Сандалии на пробковой подошве</option>
+              <option value="loafers">Лоферы-мокасины кожаные</option>
+              <option value="running">Кроссовки беговые</option>
+              <option value="winter-boots">Ботинки зимние</option>
+            </optgroup>
+          </select>
+        </div>
+
+        <div class="order-form__field">
           <label class="order-form__label" for="address">Адрес доставки</label>
           <textarea class="order-form__textarea" id="address" name="address" rows="3" placeholder="Город, улица, дом, квартира" autocomplete="street-address" required></textarea>
         </div>
